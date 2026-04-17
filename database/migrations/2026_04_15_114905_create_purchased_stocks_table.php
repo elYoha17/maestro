@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Activity;
+use App\Models\Product;
 use App\Models\Purchase;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -13,16 +13,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('purchase_payment', function (Blueprint $table) {
+        Schema::create('purchased_stocks', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Activity::class)->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(Product::class)->constrained();
             $table->foreignIdFor(Purchase::class)->constrained()->cascadeOnDelete();
-            $table->decimal('amount', 15, 0);
-            $table->decimal('charge', 15, 0);
-            $table->decimal('cash_out', 15, 0)->default(0);
+            $table->integer('quantity', unsigned: true);
+            $table->decimal('cost', 15, 0);
             $table->timestamps();
 
-            $table->unique(['activity_id', 'purchase_id']);
+            $table->unique(['purchase_id', 'product_id']);
         });
     }
 
@@ -31,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('purchase_payment');
+        Schema::dropIfExists('purchased_stocks');
     }
 };

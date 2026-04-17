@@ -1,7 +1,7 @@
 <?php
 
-use App\Models\Exercise;
 use App\Models\Product;
+use App\Models\Receivable;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,16 +13,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('initial_stock', function (Blueprint $table) {
+        Schema::create('sold_stocks', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Exercise::class)->constrained()->cascadeOnDelete();
             $table->foreignIdFor(Product::class)->constrained();
+            $table->foreignIdFor(Receivable::class)->constrained()->cascadeOnDelete();
             $table->integer('quantity', unsigned: true);
-            $table->decimal('cost', 15, 0);
             $table->decimal('price', 15, 0);
             $table->timestamps();
 
-            $table->unique(['exercise_id', 'product_id']);
+            $table->unique(['receivable_id', 'product_id']);
         });
     }
 
@@ -31,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('initial_stock');
+        Schema::dropIfExists('sold_stocks');
     }
 };
