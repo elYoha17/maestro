@@ -21,8 +21,8 @@ class CheckExerciseExists
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (!$this->exerciseService->getCurrent() && !$request->routeIs('initialize.*')) {
-            return to_route('initialize.welcome');
+        if (!$this->exerciseService->getCurrent() && !$request->routeIs('initialization.*')) {
+            return to_route('initialization.welcome');
         }
 
         return $next($request);
