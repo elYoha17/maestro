@@ -11,7 +11,6 @@ export default function Welcome() {
                 <div className="w-full max-w-2xl">
                     <div className="overflow-hidden rounded-xl border border-sidebar-border/70 bg-white dark:border-sidebar-border dark:bg-[#161615]">
                         <div className="p-8 text-center">
-                            {/* Empty state icon */}
                             <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-indigo-50 to-purple-50 dark:from-indigo-950/30 dark:to-purple-950/30">
                                 <svg
                                     className="h-8 w-8 text-indigo-600 dark:text-indigo-400"
@@ -29,19 +28,16 @@ export default function Welcome() {
                                 </svg>
                             </div>
                             
-                            {/* Title */}
                             <h2 className="mt-6 text-xl font-semibold text-gray-900 dark:text-[#EDEDEC]">
                                 Prêt à commencer ?
                             </h2>
                             
-                            {/* Description */}
                             <p className="mt-2 text-sm text-gray-500 dark:text-[#A1A09A]">
                                 Vous n'avez pas encore créé d'exercices dans votre application.
                                 <br />
                                 Commencez par ajouter votre premier exercice pour démarrer.
                             </p>
                             
-                            {/* Action button */}
                             <div className="mt-8">
                                 <Button
                                     type="button"
@@ -66,7 +62,6 @@ export default function Welcome() {
                         </div>
                     </div>
                     
-                    {/* Optional: Tips section */}
                     <div className="mt-8 grid gap-4 sm:grid-cols-3">
                         <div className="rounded-lg border border-sidebar-border/70 bg-white p-4 dark:border-sidebar-border dark:bg-[#161615]">
                             <div className="flex h-8 w-8 items-center justify-center rounded-md bg-indigo-50 dark:bg-indigo-950/30">
