@@ -17,7 +17,7 @@ Route::middleware(['auth', 'verified', 'check.exercise'])->group(function () {
         'prefix' => 'initialization',
         'as' =>'initialization.',
     ], function () {
-        Route::inertia('/initialization/welcome', 'initialization/welcome')->name('welcome');
+        Route::inertia('/welcome', 'initialization/welcome')->name('welcome');
         Route::inertia('/create', 'initialization/create')->name('create');
     });
 });
