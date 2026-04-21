@@ -24,6 +24,6 @@ class ExerciseController extends Controller
     {
         $this->exerciseService->create($request->validated());
 
-        return back();
+        return to_route('dashboard');
     }
 }
