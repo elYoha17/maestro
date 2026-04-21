@@ -1,5 +1,5 @@
 import { Head, Link } from '@inertiajs/react';
-import { welcome } from '@/routes/initialization';
+import { welcome, create } from '@/routes/initialization';
 import { Button } from '@/components/ui/button';
 
 export default function Welcome() {
@@ -44,7 +44,7 @@ export default function Welcome() {
                                     asChild
                                 >
                                     <Link
-                                        href="#"
+                                        href={create()}
                                     >
                                         <svg
                                             className="h-4 w-4"
