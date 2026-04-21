@@ -1,4 +1,4 @@
-import { Form, Head, useForm } from '@inertiajs/react';
+import { Form, Head } from '@inertiajs/react';
 import { welcome, create } from '@/routes/initialization';
 import ExerciseController from '@/actions/App/Http/Controllers/ExerciseController';
 import { Label } from '@/components/ui/label';
