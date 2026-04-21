@@ -19,6 +19,7 @@ Route::middleware(['auth', 'verified', 'check.exercise'])->group(function () {
     ], function () {
         Route::inertia('/welcome', 'initialization/welcome')->name('welcome');
         Route::inertia('/create', 'initialization/create')->name('create');
+        Route::redirect('/', 'initialization/welcome')->name('index');
     });
 });
 
