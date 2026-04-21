@@ -2,11 +2,16 @@
 
 namespace App\Http\Middleware;
 
+use App\Contracts\ExerciseServiceInterface;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
 
 class HandleInertiaRequests extends Middleware
 {
+    public function __construct(
+        protected ExerciseServiceInterface $exerciseSerice
+    )
+    {}
     /**
      * The root template that's loaded on the first page visit.
      *
@@ -41,6 +46,7 @@ class HandleInertiaRequests extends Middleware
             'auth' => [
                 'user' => $request->user(),
             ],
+            'currentDate' => $this->exerciseSerice->getCurrent()?->start_date,
             'sidebarOpen' => ! $request->hasCookie('sidebar_state') || $request->cookie('sidebar_state') === 'true',
         ];
     }
