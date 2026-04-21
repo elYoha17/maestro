@@ -11,7 +11,7 @@ export default function Welcome() {
                 <div className="w-full max-w-2xl">
                     <div className="overflow-hidden rounded-xl border border-sidebar-border/70 bg-white dark:border-sidebar-border dark:bg-[#161615]">
                         <div className="p-8 text-center">
-                            <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-indigo-50 to-purple-50 dark:from-indigo-950/30 dark:to-purple-950/30">
+                            <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-linear-to-br from-indigo-50 to-purple-50 dark:from-indigo-950/30 dark:to-purple-950/30">
                                 <svg
                                     className="h-8 w-8 text-indigo-600 dark:text-indigo-400"
                                     fill="none"
