@@ -8,12 +8,9 @@ use App\Models\Product;
 
 class CreateProductService implements CreateProductInterface
 {
-    /**
-     * Create a new class instance.
-     */
     public function __construct(
         protected CreateProduct $createAction,
-    ){}
+    ) {}
 
     public function create(array $data): Product
     {

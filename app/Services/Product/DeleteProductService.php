@@ -8,9 +8,6 @@ use App\Models\Product;
 
 class DeleteProductService implements DeleteProductInterface
 {
-    /**
-     * Create a new class instance.
-     */
     public function __construct(
         protected DeleteProduct $deleteAction,
     ) {}
