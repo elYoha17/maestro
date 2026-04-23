@@ -6,5 +6,5 @@ use App\Models\Brand;
 
 interface UpdateBrandInterface
 {
-    public function update(int|Brand $id, array $data): Brand;
+    public function update(Brand $brand, array $data): Brand;
 }

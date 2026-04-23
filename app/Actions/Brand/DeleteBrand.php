@@ -2,11 +2,12 @@
 
 namespace App\Actions\Brand;
 
+use App\Contracts\Brand\DeleteBrandInterface;
 use App\Models\Brand;
 
-class DeleteBrand
+class DeleteBrand implements DeleteBrandInterface
 {
-    public function execute(Brand $brand): bool
+    public function delete(Brand $brand): bool
     {
         return $brand->delete();
     }

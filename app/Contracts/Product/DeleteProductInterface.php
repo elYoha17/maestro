@@ -6,5 +6,5 @@ use App\Models\Product;
 
 interface DeleteProductInterface
 {
-    public function delete(int|Product $id): bool;
+    public function delete(Product $product): bool;
 }

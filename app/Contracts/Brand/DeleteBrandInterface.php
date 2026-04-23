@@ -6,5 +6,5 @@ use App\Models\Brand;
 
 interface DeleteBrandInterface
 {
-    public function delete(int|Brand $id): bool;
+    public function delete(Brand $brand): bool;
 }

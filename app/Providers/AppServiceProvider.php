@@ -2,21 +2,26 @@
 
 namespace App\Providers;
 
-use App\Actions\Exercise\CreateExercise;
-use App\Actions\Exercise\GetLatestExercise;
-use App\Contracts\Exercise\CreateExerciseInterface;
-use App\Contracts\Exercise\GetLatestExerciseInterface;
 use Carbon\CarbonImmutable;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Validation\Rules\Password;
+use Inertia\View\Components\App;
 
 class AppServiceProvider extends ServiceProvider
 {
     public $bindings = [
-        GetLatestExerciseInterface::class => GetLatestExercise::class,
-        CreateExerciseInterface::class => CreateExercise::class,
+        \App\Contracts\Brand\CreateBrandInterface::class => \App\Actions\Brand\CreateBrand::class,
+        \App\Contracts\Brand\UpdateBrandInterface::class => \App\Actions\Brand\UpdateBrand::class,
+        \App\Contracts\Brand\DeleteBrandInterface::class => \App\Actions\Brand\DeleteBrand::class,
+
+        \App\Contracts\Product\CreateProductInterface::class => \App\Actions\Product\CreateProduct::class,
+        \App\Contracts\Product\UpdateProductInterface::class => \App\Actions\Product\UpdateProduct::class,
+        \App\Contracts\Product\DeleteProductInterface::class => \App\Actions\Product\DeleteProduct::class,
+
+        \App\Contracts\Exercise\GetLatestExerciseInterface::class => \App\Actions\Exercise\GetLatestExercise::class,
+        \App\Contracts\Exercise\CreateExerciseInterface::class => \App\Actions\Exercise\CreateExercise::class,
     ];
 
     /**

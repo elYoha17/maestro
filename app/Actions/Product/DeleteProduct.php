@@ -2,11 +2,12 @@
 
 namespace App\Actions\Product;
 
+use App\Contracts\Product\DeleteProductInterface;
 use App\Models\Product;
 
-class DeleteProduct
+class DeleteProduct implements DeleteProductInterface
 {
-    public function execute(Product $product): bool
+    public function delete(Product $product): bool
     {
         return $product->delete();
     }
