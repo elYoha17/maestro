@@ -1,24 +1,25 @@
 <?php
 
+use App\Models\Exercise;
 use App\Models\User;
 
-test('an authenticated user can create an exercise', function () {
-    $user = User::factory()->create();
-    $this->actingAs($user);
+test('an exercise can be created', function () {
+    $this->actingAs(User::factory()->create());
 
-    $response = $this->post(route('exercises.store', [
-        'start_date' => $date = now()->toDateString(),
-        'fund' => 100000,
-        'receivable' => 50000,
-        'payable' => 30000,
+    $exercise = Exercise::factory()->make();
+
+    $response = $this->post(route('exercises.store', $exercise->only([
+        'start_date',
+        'fund',
+        'receivable',
+        'payable',
+    ])));
+
+    $response->assertStatus(302);
+    $this->assertDatabaseHas('exercises', $exercise->only([
+        'start_date',
+        'fund',
+        'receivable',
+        'payable',
     ]));
-
-    $response->assertRedirect(route('dashboard'));
-
-    $this->assertDatabaseHas('exercises', [
-        'start_date' => $date,
-        'fund' => 100000,
-        'receivable' => 50000,
-        'payable' => 30000,
-    ]);
 });

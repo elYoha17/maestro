@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Exercise;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Carbon;
 
 /**
  * @extends Factory<Exercise>
@@ -18,10 +19,10 @@ class ExerciseFactory extends Factory
     public function definition(): array
     {
         return [
-            'start_date' => $this->faker->dateTimeBetween('-1 month', 'now'),
-            'fund' => 0,
-            'receivable' => 0,
-            'payable' => 0,
+            'start_date' => Carbon::parse($this->faker->dateTimeBetween('-1 month', 'now'))->toDateString(),
+            'fund' => $this->faker->randomFloat(2, 10000, 1000000),
+            'receivable' => $this->faker->randomFloat(2, 10000, 1000000),
+            'payable' => $this->faker->randomFloat(2, 10000, 1000000),
         ];
     }
 }
