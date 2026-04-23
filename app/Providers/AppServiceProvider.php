@@ -2,12 +2,10 @@
 
 namespace App\Providers;
 
-use App\Contracts\BrandServiceInterface;
-use App\Contracts\ExerciseServiceInterface;
-use App\Contracts\ProductServiceInterface;
-use App\Services\BrandService;
-use App\Services\ExerciseService;
-use App\Services\ProductService;
+use App\Actions\Exercise\CreateExercise;
+use App\Actions\Exercise\GetLatestExercise;
+use App\Contracts\Exercise\CreateExerciseInterface;
+use App\Contracts\Exercise\GetLatestExerciseInterface;
 use Carbon\CarbonImmutable;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\DB;
@@ -17,7 +15,8 @@ use Illuminate\Validation\Rules\Password;
 class AppServiceProvider extends ServiceProvider
 {
     public $bindings = [
-        ExerciseServiceInterface::class => ExerciseService::class,
+        GetLatestExerciseInterface::class => GetLatestExercise::class,
+        CreateExerciseInterface::class => CreateExercise::class,
     ];
 
     /**

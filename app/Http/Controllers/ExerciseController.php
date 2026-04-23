@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Contracts\ExerciseServiceInterface;
+use App\Contracts\Exercise\CreateExerciseInterface;
 use App\Http\Requests\StoreExerciseRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 class ExerciseController extends Controller
 {
     public function __construct(
-        protected ExerciseServiceInterface $exerciseService,
+        protected CreateExerciseInterface $createExercise,
     )
     {}
     
@@ -22,7 +22,7 @@ class ExerciseController extends Controller
      */
     public function store(StoreExerciseRequest $request): RedirectResponse
     {
-        $this->exerciseService->create($request->validated());
+        $this->createExercise->create($request->validated());
 
         return to_route('dashboard');
     }

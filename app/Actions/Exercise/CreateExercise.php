@@ -2,11 +2,12 @@
 
 namespace App\Actions\Exercise;
 
+use App\Contracts\Exercise\CreateExerciseInterface;
 use App\Models\Exercise;
 
-class CreateExercise
+class CreateExercise implements CreateExerciseInterface
 {
-    public function __invoke(array $data): Exercise
+    public function create(array $data): Exercise
     {
         return Exercise::create($data);
     }

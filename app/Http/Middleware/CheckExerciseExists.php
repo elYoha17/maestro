@@ -2,7 +2,7 @@
 
 namespace App\Http\Middleware;
 
-use App\Contracts\ExerciseServiceInterface;
+use App\Contracts\Exercise\GetLatestExerciseInterface;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -10,9 +10,8 @@ use Symfony\Component\HttpFoundation\Response;
 class CheckExerciseExists
 {
     public function __construct(
-        protected ExerciseServiceInterface $exerciseService
-    )
-    { }
+        protected GetLatestExerciseInterface $getLatestExercise,
+    ) {}
     
     /**
      * Handle an incoming request.
@@ -21,11 +20,11 @@ class CheckExerciseExists
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $currentExercise = $this->exerciseService->getCurrent();
-        if (!$currentExercise && !$request->routeIs('initialization.*')) {
+        $latestExercise = $this->getLatestExercise->get();
+        if (!$latestExercise && !$request->routeIs('initialization.*')) {
             return to_route('initialization.welcome');
         }
-        else if ($currentExercise && $request->routeIs('initialization.*')) {
+        else if ($latestExercise && $request->routeIs('initialization.*')) {
             return to_route('dashboard');
         }
 

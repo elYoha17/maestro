@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Contracts\Exercise\GetLatestExerciseInterface;
 use App\Contracts\ExerciseServiceInterface;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
@@ -9,7 +10,7 @@ use Inertia\Middleware;
 class HandleInertiaRequests extends Middleware
 {
     public function __construct(
-        protected ExerciseServiceInterface $exerciseSerice
+        protected GetLatestExerciseInterface $getLastestExercise
     )
     {}
     /**
@@ -46,7 +47,7 @@ class HandleInertiaRequests extends Middleware
             'auth' => [
                 'user' => $request->user(),
             ],
-            'currentDate' => $this->exerciseSerice->getCurrent()?->start_date,
+            'currentDate' => $this->getLastestExercise->get()?->start_date,
             'sidebarOpen' => ! $request->hasCookie('sidebar_state') || $request->cookie('sidebar_state') === 'true',
         ];
     }
