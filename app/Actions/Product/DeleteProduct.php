@@ -6,7 +6,7 @@ use App\Models\Product;
 
 class DeleteProduct
 {
-    public function __invoke(Product $product): bool
+    public function execute(Product $product): bool
     {
         return $product->delete();
     }
