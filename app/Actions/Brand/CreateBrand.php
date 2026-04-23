@@ -6,7 +6,7 @@ use App\Models\Brand;
 
 class CreateBrand
 {
-    public function __invoke(array $data): Brand
+    public function execute(array $data): Brand
     {
         return Brand::create($data);
     }

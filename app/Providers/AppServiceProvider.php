@@ -18,7 +18,6 @@ class AppServiceProvider extends ServiceProvider
 {
     public $bindings = [
         ExerciseServiceInterface::class => ExerciseService::class,
-        BrandServiceInterface::class => BrandService::class,
     ];
 
     /**

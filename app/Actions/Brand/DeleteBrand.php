@@ -6,10 +6,8 @@ use App\Models\Brand;
 
 class DeleteBrand
 {
-    public function __invoke(int|Brand $id): bool
+    public function execute(Brand $brand): bool
     {
-        $brand = $id instanceof Brand ? $id : Brand::findOrFail($id);
-
         return $brand->delete();
     }
 }
