@@ -6,9 +6,8 @@ use App\Models\Product;
 
 class UpdateProduct
 {
-    public function __invoke(int|Product $id, array $data): Product
+    public function __invoke(Product $product, array $data): Product
     {
-        $product = $id instanceof Product ? $id : Product::findOrFail($id);
         $product->update($data);
 
         return $product->fresh();

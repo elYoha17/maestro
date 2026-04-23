@@ -23,11 +23,15 @@ class ProductService implements ProductServiceInterface
 
     public function update(int|Product $id, array $data): Product
     {
-        return (new UpdateProduct)($id, $data);
+        $product = $id instanceof Product ? $id : Product::findOrFail($id);
+
+        return (new UpdateProduct)($product, $data);
     }
 
     public function delete(int|Product $id): bool
     {
-        return (new DeleteProduct)($id);
+        $product = $id instanceof Product ? $id : Product::findOrFail($id);
+        
+        return (new DeleteProduct)($product);
     }
 }

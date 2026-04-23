@@ -6,9 +6,8 @@ use App\Models\Product;
 
 class DeleteProduct
 {
-    public function __invoke(int|Product $id): bool
+    public function __invoke(Product $product): bool
     {
-        $product = $id instanceof Product ? $id : Product::findOrFail($id);
         return $product->delete();
     }
 }
