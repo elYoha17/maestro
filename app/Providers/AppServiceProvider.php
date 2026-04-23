@@ -2,8 +2,10 @@
 
 namespace App\Providers;
 
+use App\Contracts\BrandServiceInterface;
 use App\Contracts\ExerciseServiceInterface;
 use App\Contracts\ProductServiceInterface;
+use App\Services\BrandService;
 use App\Services\ExerciseService;
 use App\Services\ProductService;
 use Carbon\CarbonImmutable;
@@ -17,6 +19,7 @@ class AppServiceProvider extends ServiceProvider
     public $bindings = [
         ExerciseServiceInterface::class => ExerciseService::class,
         ProductServiceInterface::class => ProductService::class,
+        BrandServiceInterface::class => BrandService::class,
     ];
 
     /**
