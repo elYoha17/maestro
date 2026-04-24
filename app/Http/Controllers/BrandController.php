@@ -1,6 +1,9 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Actions\Brand\CreateBrand;
+use App\Actions\Brand\DeleteBrand;
+use App\Actions\Brand\UpdateBrand;
 use App\Models\Brand;
 use App\Http\Requests\StoreBrandRequest;
 use App\Http\Requests\UpdateBrandRequest;
@@ -9,18 +12,12 @@ use Illuminate\Support\Facades\Redirect;
 
 class BrandController extends Controller
 {
-    public function __construct(
-        protected \App\Actions\Brand\CreateBrand $createBrand,
-        protected \App\Actions\Brand\UpdateBrand $updateBrand,
-        protected \App\Actions\Brand\DeleteBrand $deleteBrand,
-    ) {}
-
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreBrandRequest $request): RedirectResponse
+    public function store(StoreBrandRequest $request, CreateBrand $createBrand): RedirectResponse
     {
-        $this->createBrand->create($request->validated());
+        $createBrand->create($request->validated());
 
         return back();
     }
@@ -28,9 +25,9 @@ class BrandController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateBrandRequest $request, Brand $brand): RedirectResponse
+    public function update(UpdateBrandRequest $request, Brand $brand, UpdateBrand $updateBrand): RedirectResponse
     {
-        $this->updateBrand->update($brand, $request->validated());
+        $updateBrand->update($brand, $request->validated());
 
         return back();
     }
@@ -38,9 +35,9 @@ class BrandController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Brand $brand): RedirectResponse
+    public function destroy(Brand $brand, DeleteBrand $deleteBrand): RedirectResponse
     {
-        $this->deleteBrand->delete($brand);
+        $deleteBrand->delete($brand);
 
         return back();
     }

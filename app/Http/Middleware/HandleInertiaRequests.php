@@ -8,10 +8,6 @@ use Inertia\Middleware;
 
 class HandleInertiaRequests extends Middleware
 {
-    public function __construct(
-        protected \App\Actions\Exercise\GetLatestExercise $getLastestExercise
-    ) {}
-
     /**
      * The root template that's loaded on the first page visit.
      *
@@ -46,7 +42,7 @@ class HandleInertiaRequests extends Middleware
             'auth' => [
                 'user' => $request->user(),
             ],
-            'currentDate' => $this->getLastestExercise->get()?->start_date,
+            'currentDate' => app(\App\Actions\Exercise\GetLatestExercise::class)->get()?->start_date,
             'sidebarOpen' => ! $request->hasCookie('sidebar_state') || $request->cookie('sidebar_state') === 'true',
         ];
     }
