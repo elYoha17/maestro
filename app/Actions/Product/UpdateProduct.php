@@ -2,10 +2,9 @@
 
 namespace App\Actions\Product;
 
-use App\Contracts\Product\UpdateProductInterface;
 use App\Models\Product;
 
-class UpdateProduct implements UpdateProductInterface
+class UpdateProduct
 {
     public function update(Product $product, array $data): Product
     {

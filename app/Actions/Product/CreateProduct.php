@@ -2,10 +2,9 @@
 
 namespace App\Actions\Product;
 
-use App\Contracts\Product\CreateProductInterface;
 use App\Models\Product;
 
-class CreateProduct implements CreateProductInterface
+class CreateProduct
 {
     public function create(array $data): Product
     {

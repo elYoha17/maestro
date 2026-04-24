@@ -11,19 +11,6 @@ use Inertia\View\Components\App;
 
 class AppServiceProvider extends ServiceProvider
 {
-    public $bindings = [
-        \App\Contracts\Brand\CreateBrandInterface::class => \App\Actions\Brand\CreateBrand::class,
-        \App\Contracts\Brand\UpdateBrandInterface::class => \App\Actions\Brand\UpdateBrand::class,
-        \App\Contracts\Brand\DeleteBrandInterface::class => \App\Actions\Brand\DeleteBrand::class,
-
-        \App\Contracts\Product\CreateProductInterface::class => \App\Actions\Product\CreateProduct::class,
-        \App\Contracts\Product\UpdateProductInterface::class => \App\Actions\Product\UpdateProduct::class,
-        \App\Contracts\Product\DeleteProductInterface::class => \App\Actions\Product\DeleteProduct::class,
-
-        \App\Contracts\Exercise\GetLatestExerciseInterface::class => \App\Actions\Exercise\GetLatestExercise::class,
-        \App\Contracts\Exercise\CreateExerciseInterface::class => \App\Actions\Exercise\CreateExercise::class,
-    ];
-
     /**
      * Register any application services.
      */

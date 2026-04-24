@@ -2,7 +2,7 @@
 
 namespace App\Http\Middleware;
 
-use App\Contracts\Exercise\GetLatestExerciseInterface;
+use App\Actions\Exercise\GetLatestExercise;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Response;
 class CheckExerciseExists
 {
     public function __construct(
-        protected GetLatestExerciseInterface $getLatestExercise,
+        protected GetLatestExercise $getLatestExercise,
     ) {}
     
     /**

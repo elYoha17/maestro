@@ -2,17 +2,16 @@
 
 namespace App\Http\Middleware;
 
-use App\Contracts\Exercise\GetLatestExerciseInterface;
-use App\Contracts\ExerciseServiceInterface;
+use App\Contracts\ExerciseService;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
 
 class HandleInertiaRequests extends Middleware
 {
     public function __construct(
-        protected GetLatestExerciseInterface $getLastestExercise
-    )
-    {}
+        protected \App\Actions\Exercise\GetLatestExercise $getLastestExercise
+    ) {}
+
     /**
      * The root template that's loaded on the first page visit.
      *

@@ -2,10 +2,9 @@
 
 namespace App\Actions\Brand;
 
-use App\Contracts\Brand\CreateBrandInterface;
 use App\Models\Brand;
 
-class CreateBrand implements CreateBrandInterface
+class CreateBrand
 {
     public function create(array $data): Brand
     {

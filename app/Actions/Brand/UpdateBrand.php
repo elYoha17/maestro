@@ -2,10 +2,9 @@
 
 namespace App\Actions\Brand;
 
-use App\Contracts\Brand\UpdateBrandInterface;
 use App\Models\Brand;
 
-class UpdateBrand implements UpdateBrandInterface
+class UpdateBrand
 {
     public function update(Brand $brand, array $data): Brand
     {

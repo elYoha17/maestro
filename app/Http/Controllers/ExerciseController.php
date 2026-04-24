@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Contracts\Exercise\CreateExerciseInterface;
 use App\Http\Requests\StoreExerciseRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -10,7 +9,7 @@ use Illuminate\Http\Request;
 class ExerciseController extends Controller
 {
     public function __construct(
-        protected CreateExerciseInterface $createExercise,
+        protected \App\Actions\Exercise\CreateExercise $createExercise,
     )
     {}
     

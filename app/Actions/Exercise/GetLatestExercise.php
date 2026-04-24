@@ -2,10 +2,9 @@
 
 namespace App\Actions\Exercise;
 
-use App\Contracts\Exercise\GetLatestExerciseInterface;
 use App\Models\Exercise;
 
-class GetLatestExercise implements GetLatestExerciseInterface
+class GetLatestExercise
 {
     public function get(): ?Exercise
     {

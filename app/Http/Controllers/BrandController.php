@@ -1,10 +1,6 @@
 <?php
-
 namespace App\Http\Controllers;
 
-use App\Contracts\Brand\CreateBrandInterface;
-use App\Contracts\Brand\DeleteBrandInterface;
-use App\Contracts\Brand\UpdateBrandInterface;
 use App\Models\Brand;
 use App\Http\Requests\StoreBrandRequest;
 use App\Http\Requests\UpdateBrandRequest;
@@ -14,9 +10,9 @@ use Illuminate\Support\Facades\Redirect;
 class BrandController extends Controller
 {
     public function __construct(
-        protected CreateBrandInterface $createBrand,
-        protected UpdateBrandInterface $updateBrand,
-        protected DeleteBrandInterface $deleteBrand,
+        protected \App\Actions\Brand\CreateBrand $createBrand,
+        protected \App\Actions\Brand\UpdateBrand $updateBrand,
+        protected \App\Actions\Brand\DeleteBrand $deleteBrand,
     ) {}
 
     /**
