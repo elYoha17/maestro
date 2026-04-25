@@ -27,7 +27,7 @@ test('a product can be updated', function () {
 
     $createdProduct = Product::factory()->create();
 
-    $updatedData = Product::factory()->make()->except(['code', 'sku']);
+    $updatedData = Product::factory()->make()->except('sku');
 
     $response = $this->put(route('products.update', $createdProduct), $updatedData);
 

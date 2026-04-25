@@ -23,10 +23,8 @@ class UpdateProductRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'brand_id' => ['nullable', 'exists:brands,id'],
             'name' => ['required', 'string', 'max:255'],
             'price' => ['required', 'numeric:2', 'min:0'],
-            'description' => ['nullable', 'string', 'max:255'],
         ];
     }
 }
