@@ -1,5 +1,5 @@
 import { usePage, Link } from '@inertiajs/react';
-import { BookOpen, FolderGit2, LayoutGrid, Play } from 'lucide-react';
+import { BookOpen, FolderGit2, LayoutGrid, Play, Apple } from 'lucide-react';
 import AppLogo from '@/components/app-logo';
 import { NavFooter } from '@/components/nav-footer';
 import { NavMain } from '@/components/nav-main';
@@ -14,7 +14,8 @@ import {
     SidebarMenuItem,
 } from '@/components/ui/sidebar';
 import { dashboard } from '@/routes';
-import { index } from '@/routes/initialization';
+import { index as initializationIndex } from '@/routes/initialization';
+import { index as productsIndex } from '@/routes/products';
 import type { NavItem } from '@/types';
 
 const mainNavItems: NavItem[] = [
@@ -28,8 +29,13 @@ const mainNavItems: NavItem[] = [
 const initializationNavItems: NavItem[] = [
     {
         title: 'Initialisation',
-        href: index(),
+        href: initializationIndex(),
         icon: Play,
+    },
+    {
+        title: 'Produits',
+        href: productsIndex(),
+        icon: Apple,
     },
 ];
 

@@ -3,6 +3,14 @@
 use App\Models\Product;
 use App\Models\User;
 
+test('products page is accessible', function () {
+    $this->actingAs(User::factory()->administrator()->create());
+
+    $response = $this->get(route('products.index'));
+
+    $response->assertStatus(200);
+});
+
 test('a product can be created', function () {
     $this->actingAs(User::factory()->administrator()->create());
 
@@ -16,7 +24,7 @@ test('a product can be created', function () {
 
 test('a product can be updated', function () {
     $this->actingAs(User::factory()->administrator()->create());
-    
+
     $createdProduct = Product::factory()->create();
 
     $updatedData = Product::factory()->make()->except(['code', 'sku']);

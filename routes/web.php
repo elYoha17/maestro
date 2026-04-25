@@ -14,7 +14,7 @@ Route::middleware(['auth', 'verified', 'check.exercise'])->group(function () {
     Route::inertia('dashboard', 'dashboard')->name('dashboard');
 
     Route::resource('brands', BrandController::class)->only(['store', 'update', 'destroy'])->withoutMiddleware('check.exercise');
-    Route::resource('products', ProductController::class)->only(['store', 'update', 'destroy'])->withoutMiddleware('check.exercise');
+    Route::resource('products', ProductController::class)->only(['index', 'store', 'update', 'destroy'])->withoutMiddleware('check.exercise');
 
     Route::resource('exercises', ExerciseController::class)->only(['store'])->withoutMiddleware('check.exercise');
 
