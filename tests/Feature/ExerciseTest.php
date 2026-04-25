@@ -4,7 +4,7 @@ use App\Models\Exercise;
 use App\Models\User;
 
 test('an exercise can be created', function () {
-    $this->actingAs(User::factory()->create());
+    $this->actingAs(User::factory()->administrator()->create());
 
     $exercise = Exercise::factory()->make();
 
