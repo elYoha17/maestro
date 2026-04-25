@@ -17,43 +17,47 @@ import { dashboard } from '@/routes';
 import { index as initializationIndex } from '@/routes/initialization';
 import { index as productsIndex } from '@/routes/products';
 import type { NavItem } from '@/types';
-
-const mainNavItems: NavItem[] = [
-    {
-        title: 'Dashboard',
-        href: dashboard(),
-        icon: LayoutGrid,
-    },
-];
-
-const initializationNavItems: NavItem[] = [
-    {
-        title: 'Initialisation',
-        href: initializationIndex(),
-        icon: Play,
-    },
-    {
-        title: 'Produits',
-        href: productsIndex(),
-        icon: Apple,
-    },
-];
-
-const footerNavItems: NavItem[] = [
-    {
-        title: 'Repository',
-        href: 'https://github.com/laravel/react-starter-kit',
-        icon: FolderGit2,
-    },
-    {
-        title: 'Documentation',
-        href: 'https://laravel.com/docs/starter-kits#react',
-        icon: BookOpen,
-    },
-];
+import { useCurrentUrl } from '@/hooks/use-current-url';
 
 export function AppSidebar() {
+    const { isCurrentOrParentUrl } = useCurrentUrl();
     const {currentDate} = usePage().props;
+
+    const mainNavItems: NavItem[] = [
+        {
+            title: 'Dashboard',
+            href: dashboard(),
+            icon: LayoutGrid,
+        },
+    ];
+
+    const initializationNavItems: NavItem[] = [
+        {
+            title: 'Initialisation',
+            href: initializationIndex(),
+            icon: Play,
+            isActive: isCurrentOrParentUrl(initializationIndex()),
+        },
+        {
+            title: 'Produits',
+            href: productsIndex(),
+            icon: Apple,
+            isActive: isCurrentOrParentUrl(productsIndex()),
+        },
+    ];
+
+    const footerNavItems: NavItem[] = [
+        {
+            title: 'Repository',
+            href: 'https://github.com/laravel/react-starter-kit',
+            icon: FolderGit2,
+        },
+        {
+            title: 'Documentation',
+            href: 'https://laravel.com/docs/starter-kits#react',
+            icon: BookOpen,
+        },
+    ];
 
     return (
         <Sidebar collapsible="icon" variant="inset">
