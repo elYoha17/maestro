@@ -217,7 +217,7 @@ export default function ProductsIndex({ products }: Props) {
                                                         Modifier
                                                     </DropdownMenuItem>
                                                     <DropdownMenuItem
-                                                        className="text-destructive"
+                                                        className="text-destructive dark:text-red-500"
                                                         onClick={() => handleDeleteProduct(product.id)}
                                                     >
                                                         <Trash2 className="mr-2 h-4 w-4" />
