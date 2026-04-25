@@ -1,12 +1,10 @@
 <?php
 
 use App\Models\Brand;
-use App\Models\Exercise;
 use App\Models\User;
 
 test('a brand can be created', function () {
     $this->actingAs(User::factory()->administrator()->create());
-    Exercise::factory()->create();
 
     $brand = Brand::factory()->make();
     
@@ -20,7 +18,6 @@ test('a brand can be created', function () {
 
 test('a brand can be updated', function () {
     $this->actingAs(User::factory()->administrator()->create());
-    Exercise::factory()->create();
     
     $createdBrand = Brand::factory()->create();
     do {
@@ -37,7 +34,6 @@ test('a brand can be updated', function () {
 
 test('a brand can be deleted', function () {
     $this->actingAs(User::factory()->administrator()->create());
-    Exercise::factory()->create();
     $brand = Brand::factory()->create();
 
     $response = $this->delete(route('brands.destroy', $brand));
