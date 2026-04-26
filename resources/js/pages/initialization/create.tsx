@@ -1,28 +1,40 @@
 import { Form, Head } from '@inertiajs/react';
-import { welcome, create } from '@/routes/initialization';
 import ExerciseController from '@/actions/App/Http/Controllers/ExerciseController';
-import { Label } from '@/components/ui/label';
-import { Input } from '@/components/ui/input';
+import Heading from '@/components/heading';
 import InputError from '@/components/input-error';
 import { Button } from '@/components/ui/button';
+import {
+    Card,
+    CardContent,
+    CardDescription,
+    CardHeader,
+    CardTitle,
+} from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { create, welcome } from '@/routes/initialization';
+import type { ExerciseFormData } from '@/types';
+
+const defaultExerciseValues: ExerciseFormData = {
+    start_date: new Date().toISOString().split('T')[0] ?? '',
+    fund: '0.00',
+    receivable: '0.00',
+    payable: '0.00',
+};
 
 export default function Create() {
     return (
         <>
             <Head title="Créer un exercice" />
-            
-            <div className="flex h-full flex-1 flex-col gap-4 p-4">
-                <div className="flex items-center justify-between">
-                    <div>
-                        <h1 className="text-2xl font-semibold text-gray-900 dark:text-[#EDEDEC]">
-                            Nouvel exercice
-                        </h1>
-                        <p className="mt-1 text-sm text-gray-500 dark:text-[#A1A09A]">
-                            Définissez les paramètres initiaux de votre session de travail
-                        </p>
-                    </div>
+
+            <div className="flex h-full flex-1 flex-col gap-6 p-4">
+                <div className="max-w-3xl">
+                    <Heading
+                        title="Nouvel exercice"
+                        description="Définissez les paramètres initiaux de votre session de travail."
+                    />
                 </div>
-                
+
                 <div className="w-full max-w-3xl">
                     <Form
                         {...ExerciseController.store.form()}
@@ -31,138 +43,159 @@ export default function Create() {
                         }}
                         className="space-y-8"
                     >
-                        {({errors, processing}) => (
+                        {({ errors, processing }) => (
                             <>
-                                <div className="overflow-hidden rounded-xl border border-sidebar-border/70 bg-white dark:border-sidebar-border dark:bg-[#161615]">
-                                    <div className="border-b border-sidebar-border/70 px-6 py-4 dark:border-sidebar-border">
-                                        <h2 className="text-base font-semibold text-gray-900 dark:text-[#EDEDEC]">
+                                <Card className="border-sidebar-border/70 shadow-none">
+                                    <CardHeader>
+                                        <CardTitle>
                                             Informations générales
-                                        </h2>
-                                        <p className="mt-0.5 text-sm text-gray-500 dark:text-[#A1A09A]">
-                                            Date de début de l'exercice
-                                        </p>
-                                    </div>
-                                    
-                                    <div className="p-6">
+                                        </CardTitle>
+                                        <CardDescription>
+                                            Date de début de l'exercice.
+                                        </CardDescription>
+                                    </CardHeader>
+
+                                    <CardContent>
                                         <div className="max-w-md">
-                                            <Label htmlFor="start_date">Date de début</Label>
-            
+                                            <Label htmlFor="start_date">
+                                                Date de début
+                                            </Label>
+
                                             <Input
                                                 id="start_date"
                                                 type="date"
                                                 className="mt-1 block w-full"
-                                                defaultValue={new Date().toISOString().split('T')[0]}
+                                                defaultValue={
+                                                    defaultExerciseValues.start_date
+                                                }
                                                 name="start_date"
                                                 required
                                                 placeholder="Date de début"
                                             />
-                                            
+
                                             <InputError
                                                 className="mt-2"
                                                 message={errors.start_date}
                                             />
-                                            
-                                            <p className="mt-2 text-xs text-gray-500 dark:text-[#A1A09A]">
-                                                Cette date marque le début de votre session de travail. L'exercice restera ouvert jusqu'à la prochaine ouverture.
+
+                                            <p className="mt-2 text-xs text-muted-foreground">
+                                                Cette date marque le début de
+                                                votre session de travail.
+                                                L'exercice restera ouvert
+                                                jusqu'à la prochaine ouverture.
                                             </p>
                                         </div>
-                                    </div>
-                                </div>
-                                
-                                <div className="overflow-hidden rounded-xl border border-sidebar-border/70 bg-white dark:border-sidebar-border dark:bg-[#161615]">
-                                    <div className="border-b border-sidebar-border/70 px-6 py-4 dark:border-sidebar-border">
-                                        <h2 className="text-base font-semibold text-gray-900 dark:text-[#EDEDEC]">
+                                    </CardContent>
+                                </Card>
+
+                                <Card className="border-sidebar-border/70 shadow-none">
+                                    <CardHeader>
+                                        <CardTitle>
                                             Situation financière initiale
-                                        </h2>
-                                        <p className="mt-0.5 text-sm text-gray-500 dark:text-[#A1A09A]">
-                                            Renseignez les montants disponibles au démarrage de l'exercice
-                                        </p>
-                                    </div>
-                            
-                                    <div className="p-6">
+                                        </CardTitle>
+                                        <CardDescription>
+                                            Renseignez les montants disponibles
+                                            au démarrage de l'exercice.
+                                        </CardDescription>
+                                    </CardHeader>
+
+                                    <CardContent>
                                         <div className="grid gap-6 md:grid-cols-2">
                                             <div className="md:col-span-2">
-                                                <Label htmlFor="fund">Fonds disponibles</Label>
-            
+                                                <Label htmlFor="fund">
+                                                    Fonds disponibles
+                                                </Label>
+
                                                 <Input
                                                     id="fund"
                                                     type="number"
                                                     step="0.01"
                                                     min="0"
                                                     className="mt-1 block w-full"
-                                                    defaultValue={new Date().toISOString().split('T')[0]}
+                                                    defaultValue={
+                                                        defaultExerciseValues.fund
+                                                    }
                                                     name="fund"
                                                     required
                                                     placeholder="0.00"
                                                 />
-                                                
+
                                                 <InputError
                                                     className="mt-2"
                                                     message={errors.fund}
                                                 />
-                                                
-                                                <p className="mt-2 text-xs text-gray-500 dark:text-[#A1A09A]">
-                                                    Trésorerie et équivalents disponibles pour l'exercice
+
+                                                <p className="mt-2 text-xs text-muted-foreground">
+                                                    Trésorerie et équivalents
+                                                    disponibles pour l'exercice.
                                                 </p>
                                             </div>
-                                            
+
                                             <div>
-                                                <Label htmlFor="receivable">Créances</Label>
-            
+                                                <Label htmlFor="receivable">
+                                                    Créances
+                                                </Label>
+
                                                 <Input
                                                     id="receivable"
                                                     type="number"
                                                     step="0.01"
                                                     min="0"
                                                     className="mt-1 block w-full"
-                                                    defaultValue={new Date().toISOString().split('T')[0]}
+                                                    defaultValue={
+                                                        defaultExerciseValues.receivable
+                                                    }
                                                     name="receivable"
                                                     required
                                                     placeholder="0.00"
                                                 />
-                                                
+
                                                 <InputError
                                                     className="mt-2"
                                                     message={errors.receivable}
                                                 />
 
-                                                <p className="mt-2 text-xs text-gray-500 dark:text-[#A1A09A]">
-                                                    Montants à recevoir (clients, débiteurs)
+                                                <p className="mt-2 text-xs text-muted-foreground">
+                                                    Montants à recevoir
+                                                    (clients, débiteurs).
                                                 </p>
                                             </div>
 
                                             <div>
-                                                <Label htmlFor="payable">Dettes</Label>
-            
+                                                <Label htmlFor="payable">
+                                                    Dettes
+                                                </Label>
+
                                                 <Input
                                                     id="payable"
                                                     type="number"
                                                     step="0.01"
                                                     min="0"
                                                     className="mt-1 block w-full"
-                                                    defaultValue={new Date().toISOString().split('T')[0]}
+                                                    defaultValue={
+                                                        defaultExerciseValues.payable
+                                                    }
                                                     name="payable"
                                                     required
                                                     placeholder="0.00"
                                                 />
-                                                
+
                                                 <InputError
                                                     className="mt-2"
                                                     message={errors.payable}
                                                 />
-                                                
-                                                <p className="mt-2 text-xs text-gray-500 dark:text-[#A1A09A]">
-                                                    Montants à payer (fournisseurs, créditeurs)
+
+                                                <p className="mt-2 text-xs text-muted-foreground">
+                                                    Montants à payer
+                                                    (fournisseurs, créditeurs).
                                                 </p>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                                
-                                <div className="flex items-center gap-3 border-t border-sidebar-border/70 pt-6 dark:border-sidebar-border">
-                                    <Button
-                                        disabled={processing}
-                                    >
+                                    </CardContent>
+                                </Card>
+
+                                <div className="flex items-center gap-3 border-t border-sidebar-border/70 pt-6">
+                                    <Button disabled={processing}>
                                         Démarrer l'exercice
                                     </Button>
                                 </div>

@@ -13,11 +13,11 @@ import {
     SidebarMenuButton,
     SidebarMenuItem,
 } from '@/components/ui/sidebar';
+import { useCurrentUrl } from '@/hooks/use-current-url';
 import { dashboard } from '@/routes';
 import { index as initializationIndex } from '@/routes/initialization';
 import { index as productsIndex } from '@/routes/products';
 import type { NavItem } from '@/types';
-import { useCurrentUrl } from '@/hooks/use-current-url';
 
 export function AppSidebar() {
     const { isCurrentOrParentUrl } = useCurrentUrl();
